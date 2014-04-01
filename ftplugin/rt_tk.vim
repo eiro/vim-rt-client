@@ -9,11 +9,13 @@
 "
 "}}}
 
-nnoremap ,$copy_paste ?^===> <cr>j"byN:4y s<cr>
-noremap ,$new_mail   <c-w><c-n>:setf mail<cr>
-noremap ,$setup_body "bp:,$s#^#> <cr>:%d b<cr>
-noremap ,$comment :0r ~/.vim/mutt_drafts/rt-comment<cr>
-noremap ,$respond :0r ~/.vim/mutt_drafts/rt-respond<cr>
+nnoremap ,$copy_body ?^===> <cr>j"byN
+nnoremap ,$copy_subject 0gg/^Subject:<cr>"sY
+nmap ,$copy_paste ,$copy_body,$copy_subject
+nnoremap ,$new_mail   <c-w><c-n>:setf mail<cr>
+nnoremap ,$setup_body "bp:,$s#^#> <cr>:%d b<cr>
+nnoremap ,$comment :0r ~/.vim/mutt_drafts/rt-comment<cr>
+nnoremap ,$respond :0r ~/.vim/mutt_drafts/rt-respond<cr>
 
 " FIX:dispec #di is unistra IT dpt specific
 noremap ,$subject 0gg}"sP:s,rt #ticket/,di #<cr>

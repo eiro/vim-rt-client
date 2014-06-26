@@ -25,18 +25,30 @@ of rt show ticket
 
 # mappings 
 
-## in rt_q
+## in rt_q 
 
-    ,v view the ticket in another buffer
+those commands works for
+
+* a line in normal mode
+* a selection in visual mode 
+
+    ,h ticket history in another buffer 
     ,s stale the ticket (need to be piped)
     ,r resolve the ticket (need to be piped)
     ,o set the ticket to owner ... (just write there) 
     ,t take the ticket
 
+those bindings are very specific to my own rt instance. i had no time to think
+generic so this are just examples (any idea to have them on a separated file?
+something like `:so ~/.vim/rt_q_mappings.vim` ?)  
+
+    ,qi set owner=nobody queue=infra
+    ,qs set owner=nobody queue=support
+    ,I  prefix subject with [INGE]
+    ,T  prefix subject with [TODO]
+
 ## in rt_tk
 
     ,r respond to ticket
     ,c comment the ticket
-
-## todo: remove/configure specific stuff
 

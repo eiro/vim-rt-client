@@ -23,7 +23,8 @@ vnoremap ,I  :s/\v(\d+) # (.*)/rt edit \1 set subject="[INGE] \2"
 vnoremap ,T  :s/\v(\d+) # (.*)/rt edit \1 set subject="[TODO] \2"
 
 let users='~/'.$RT_WORKSPACE.'/users'
-" "call BufPick('0r$RT_WORKSPACE/users','s/\s.*//') 
+inoremap <c-x><c-u> <esc>:call BufPick('0r$RT_WORKSPACE/users','s/\s.*//')<cr>
+vnoremap ,O  :s/\v(\d+).*/rt edit \1 set owner=<cr>:call BufPick('0r$RT_WORKSPACE/users','s/\s.*//')<cr>
 
 " Evolve : ~/.vim/rt/README
 

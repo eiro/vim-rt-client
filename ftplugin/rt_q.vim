@@ -22,5 +22,5 @@ vnoremap ,qs :s/\v(\d+).*/rt edit \1 set owner=nobody queue=Support
 vnoremap ,I  :s/\v(\d+) # (.*)/rt edit \1 set subject="[INGE] \2"
 vnoremap ,T  :s/\v(\d+) # (.*)/rt edit \1 set subject="[TODO] \2"
 
-inoremap <c-x><c-u> <esc>:RTU<cr>
-vnoremap ,O  :s/\v(\d+).*/rt edit \1 set owner=<cr>:RTU<cr>
+inoremap <c-x><c-u> <esc>:RTU<cr>:FuzzySearch<space>
+nmap ,O  ,o<c-x><c-u>

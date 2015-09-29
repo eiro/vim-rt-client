@@ -30,3 +30,5 @@ nmap <buffer> ,r ,$copy_paste,$new_mail,$setup_body,$respond,$subject"bp
 " nnoremap <buffer> ,$subject }"sP:s#ticket/<cr>j"bp:,/^-- $/s#^#> <cr> 
 "
 nnoremap <buffer> ,g /^Subject: \[<cr>Y:enew<bar>setf gitcommit<bar>0put<cr>cf/fix:di#<esc>Exo<cr>
+
+nnoremap ,u :%w !5wen '/^Subject: / and print "https://rt.unistra.fr/rt/Ticket/Display.html?id=",m(/(\d+))'<cr>

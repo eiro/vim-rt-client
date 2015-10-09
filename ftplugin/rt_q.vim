@@ -1,4 +1,5 @@
-nnoremap ,h  Y<c-w><c-n>:setf rt_tk<cr>P!!sed 's/^/rt show /' <bar> zsh <cr> 
+command -bar TKhistory y | enew | setf rt_tk | 0put | s/^/rt show / | .!zsh
+nnoremap ,h  :TKhistory<cr>
 
 nnoremap ,s  :s/\v(\d+).*/rt edit \1 set status=stalled/<cr>
 nnoremap ,r  :s/\v(\d+).*/rt edit \1 set status=resolved/<cr>

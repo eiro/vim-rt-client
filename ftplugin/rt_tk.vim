@@ -6,16 +6,33 @@ command -buffer -bar SelectBlock
 
 command -buffer -bar SV silent SelectBlock|normal gv
 
-command -range -buffer -bar CopyBody
-    \| <line1>,<line2>y b
-    \| 0|/^Subject: /|y s
+command -range -buffer -bar CopyBody silent <line1>,<line2>VerboseCopyBody
+command -range -buffer -bar VerboseCopyBody
+    \| <line1>,<line2> y b
+    \| enew |0put |%s/^/> / |%d b |bd!
+    \| 0
+    \| /^Subject: /
+    \| y s
  
-command -buffer -bar Comment
-    \| enew | setf mail | file Commentaire\ RT
+command -buffer -bar Comment silent VerboseComment
+command -buffer -bar VerboseComment
+    \| enew | setf mail 
     \| silent 0r ~/.vim/mutt_drafts/rtdi
-    \| /^$/ | y S | put! s | put b
+    \| /^$/-1 |PasteSubject! |+1|put b
 
-command! -bar Respond Comment |file Réponse\ RT|0|/^To: /|s/-comment//
+command -buffer Phone 0|/^Subject: /|y s
+    \| enew | setf mail 
+    \| silent 0r ~/.vim/mutt_drafts/phone
+    \| /^$/ | PasteSubject!
+
+command -buffer -bar Respond silent VerboseRespond
+command! -bar VerboseRespond Comment |0|/^To: /|s/-comment//
+
+command! -bar -bang PasteSubject put s
+    \| s,rt #ticket/,di #,
+    \| d s| put<bang> s
+" "| d s |put<bang> s
+
 
 vnoremap <buffer> C :CopyBody<cr>:Comment<cr>
 vnoremap <buffer> R :CopyBody<cr>:Respond<cr>

@@ -1,3 +1,10 @@
+# DON'T USE IT
+
+those macros spared me a lot of time when i was in charge of
+[sympa](http://www.sympa.org) at the
+[university of Strasbourg](http://www.unistra.fr). i left this job
+in circa 2016 and this repo will be removed without warning.
+
 # install
 
 put those files in your `&rtp` (`:h 'rtp'` for more informations).
